@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+  {% block main %}
+    <!-- temp -->
+  {% endblock %}
+  <script>
+    {% if session %}
+      var session = {{ session }}
+    {% else %}
+      var session = null
+    {% endif %}
+  </script>
+  <script src="/static/js/bundle.js"></script>
+</body>
+</html>
