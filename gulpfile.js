@@ -6,7 +6,7 @@ var gulp = require('gulp'),
   nib = require('nib')
 
 var paths = {
-  system: './src/system/*.js',
+  server: './src/server/*.js',
   js: './assets/js',
   stylus: './src/assets/styl/*.styl'
 }
@@ -23,7 +23,7 @@ gulp.task('webpack-dev', function() {
 
 gulp.task('nodemon', function() {
   nodemon({
-    script: 'server.js',
+    script: 'bootstrap.js',
     ext: 'js html',
     env: { 'NODE_ENV': 'development' },
     ignore: ['./src/assets/js/*.js']
@@ -31,9 +31,9 @@ gulp.task('nodemon', function() {
 })
 
 gulp.task('babel', function() {
-  return gulp.src(paths.system)
+  return gulp.src(paths.server)
     .pipe(babel())
-    .pipe(gulp.dest('./core'))
+    .pipe(gulp.dest('./server'))
 })
 
 gulp.task('stylus', function() {
@@ -46,7 +46,7 @@ gulp.task('stylus', function() {
 })
 
 gulp.task('watch', function() {
-  gulp.watch(paths.system, ['babel'])
+  gulp.watch(paths.server, ['babel'])
   gulp.watch(paths.stylus, ['stylus'])
 })
 
